@@ -9,12 +9,13 @@ import { FRASES } from './frases-mock';
 })
 export class PainelComponent implements OnInit {
 
-  public frases: Frase[] = FRASES;
-  public instrucao: string = "Traduza a frase";
-  public resposta: string;
-  public rodada: number = 0;
+  public frases     : Frase[] = FRASES;
+  public instrucao  : string = "Traduza a frase";
+  public resposta   : string;
+  public rodada     : number = 0;
   public rodadaFrase: Frase;
-  public progresso:number = 0;
+  public progresso  : number = 0;
+  public tentativas  : number = 3;
 
   constructor() { 
     this.atualizarRodada();
@@ -28,7 +29,6 @@ export class PainelComponent implements OnInit {
   }
 
   public verificarResposta(): void {
-
     if(this.rodadaFrase.frasePtBr == this.resposta) {
       alert('A tradução está Correta');
       //trocar pergunta da rodada
@@ -38,7 +38,13 @@ export class PainelComponent implements OnInit {
       //atualiza o objeto rodadaFrase
       this.atualizarRodada();
     } else {
-      alert('A tradução está errada');
+      //diminuir a variavel tentativas
+      this.tentativas--;
+      if(this.tentativas === -1 ) {
+        alert('Você perdeu todas as tentivas.')
+      } else {
+        alert('A tradução está errada');
+      }
     }
   }
 
