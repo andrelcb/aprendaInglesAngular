@@ -2,7 +2,7 @@
     <div class="jumbotron mt-4">
         <div class="row">
             <div class="col-sm-6">
-                <app-progresso></app-progresso>
+                <app-progresso [progresso]="progresso"></app-progresso>
             </div>
             <div class="col-sm-6">
                 <div class="d-flex justify-content-end">
@@ -13,9 +13,9 @@
         <div class="row">
             <div class="col">
                 <h6>{{ instrucao }}</h6>
-                <p>{{ frases[0].fraseEng }}</p>
+                <p>{{ rodadaFrase.fraseEng }}</p>
                 <div class="form-group">
-                  <textarea (input)="atualizarResposta($event)" class="form-control" rows="3"></textarea>
+                  <textarea (input)="atualizarResposta($event)" class="form-control" rows="3" value='{{ resposta }}'></textarea>
                 </div>
             </div>
         </div>
